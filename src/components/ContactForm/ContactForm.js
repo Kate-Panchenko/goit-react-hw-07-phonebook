@@ -3,7 +3,8 @@ import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Form, Label, Field, Button } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, addContact } from 'redux/contactsSlice';
+import { getContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const initialValues = {
   name: '',

@@ -12,3 +12,12 @@ export const Contact = styled.li`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Message = styled.div`
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.22;
+  color: ${props => props.theme.black};
+  margin-top: 24px;
+  text-align: center;
+`;

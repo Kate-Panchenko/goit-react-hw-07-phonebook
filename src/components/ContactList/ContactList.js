@@ -2,24 +2,23 @@ import ContactItem from 'components/ContactItem/ContactItem';
 import { List, Contact, Message } from './ContactList.styled';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getLoading, getError } from 'redux/contactsSlice';
-import { getFilter } from 'redux/filterSlice';
+import {
+  selectLoading,
+  selectError,
+  selectFilteredContacts,
+} from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 
 function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const isLoading = useSelector(getLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
     <>
